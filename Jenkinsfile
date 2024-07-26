@@ -1,30 +1,23 @@
-pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                echo "Checking out"
-                checkout scm
-            }
-        }
-        stage('Build') {
-            steps {
-                echo "Building..."
-                sh 'javac Main.java'
-            }
-        }
-        stage('Run') {
-            steps {
-                echo "Running..."
-                sh 'java Main'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo "Deploying..."
-            }
-        }
+node {
+    stage('Checkout') {
+        echo "Checking out code..."
+        checkout scm
     }
+    
+    stage('Build') {
+        echo "Building..."
+        sh 'javac Main.java'
+    }
+    
+    stage('Run') {
+        echo "Running..."
+        sh 'java Main'
+    }
+    
+    stage('Deploy') {
+        echo "Deploying..."
+    }
+    
     post {
         success {
             echo 'Pipeline completed successfully'
