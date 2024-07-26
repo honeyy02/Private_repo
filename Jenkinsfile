@@ -13,20 +13,4 @@ node {
         echo "Running..."
         sh 'java Main'
     }
-    
-    stage('Deploy') {
-        echo "Deploying..."
-    }
-    
-    post {
-        success {
-            echo 'Pipeline completed successfully'
-        }
-        failure {
-            echo 'Pipeline failed'
-        }
-        always {
-            echo 'Pipeline execution completed'
-        }
-    }
 }
